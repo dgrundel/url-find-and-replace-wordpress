@@ -53,11 +53,18 @@
         }
         
         function register_fields() {
-            register_setting( 'general', 'url_find_and_replace__find', array(&$this, 'sanitize_field'));
-            register_setting( 'general', 'url_find_and_replace__replace', array(&$this, 'sanitize_field'));
             
-            add_settings_field('url_find_and_replace__find', '<label for="url_find_and_replace__find">'.__('URL Find and Replace -- Find' , 'url_find_and_replace__find' ).'</label>' , array(&$this, 'find_field_html') , 'general' );
-            add_settings_field('url_find_and_replace__replace', '<label for="url_find_and_replace__replace">'.__('URL Find and Replace -- Replace' , 'url_find_and_replace__replace' ).'</label>' , array(&$this, 'replace_field_html') , 'general' );
+            add_settings_section('url_find_and_replace', 'URL Find and Replace', array(&$this, 'section_description_html'), 'permalink');
+            
+            register_setting('general', 'url_find_and_replace__find', array(&$this, 'sanitize_field'));
+            register_setting('general', 'url_find_and_replace__replace', array(&$this, 'sanitize_field'));
+            
+            add_settings_field('url_find_and_replace__find', '<label for="url_find_and_replace__find">'.__('Find String' , 'url_find_and_replace__find' ).'</label>' , array(&$this, 'find_field_html') , 'permalink', 'url_find_and_replace');
+            add_settings_field('url_find_and_replace__replace', '<label for="url_find_and_replace__replace">'.__('Replace With' , 'url_find_and_replace__replace' ).'</label>' , array(&$this, 'replace_field_html') , 'permalink', 'url_find_and_replace');
+        }
+        
+        function section_description_html() {
+            ?><p>Options for the URL Find and Replace plugin. <strong>Use with caution</strong>.</p><?php
         }
         
         function find_field_html() {

@@ -3,9 +3,9 @@ url-find-and-replace-wordpress
 
 Find a string in the current URL, replace it, and redirect to the new URL. The redirect used is a "301 moved permanently".
 
-Configure your find and replace strings in Settings -> General in the WordPress admin panel.
+Configure your find and replace strings in **Settings -> Permalinks** in the WordPress admin panel.
 
-No, it doesn't support using a regex. If you're smart enough to know how to write a regex, fork the plugin and replace the following line of code yourself:
+No, it doesn't support using a regex. If you're smart enough to know how to write a regex, I suspect you can fork the plugin and replace the following line of code yourself:
 
 ```
 $redirect_url = str_replace($old, $new, $current_url);
